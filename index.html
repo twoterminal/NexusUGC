@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global UGC Coordination | Famous 1M+ & Health Creator Liaison</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: {
+                            800: '#111827',
+                            900: '#0B0F17',
+                            950: '#05070B',
+                        },
+                        mint: {
+                            300: '#6EE7B7',
+                            400: '#34D399',
+                            500: '#10B981',
+                            600: '#059669',
+                        },
+                        cyanGlow: {
+                            400: '#22D3EE',
+                            500: '#06B6D4',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #05070B;
+            color: #f3f4f6;
+        }
+
+        /* Ambient Glow Background Blobs */
+        .glow-emerald {
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.16) 0%, rgba(5, 7, 11, 0) 70%);
+        }
+        .glow-cyan {
+            background: radial-gradient(circle, rgba(6, 182, 212, 0.14) 0%, rgba(5, 7, 11, 0) 70%);
+        }
+
+        /* Glassmorphism Styling Tokens */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.65);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-card-accent {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(6, 182, 212, 0.06) 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(16, 185, 129, 0.25);
+        }
+
+        .glass-nav {
+            background: rgba(5, 7, 11, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        /* Custom Radio Button & Input Style */
+        .quiz-option {
+            transition: all 0.2s ease-in-out;
+        }
+        .quiz-option:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.05);
+        }
+        .quiz-option.active {
+            border-color: rgba(16, 185, 129, 0.8);
+            background: rgba(16, 185, 129, 0.12);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070B;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-mint-500 selection:text-obsidian-950">
+
+    <!-- NAVIGATION BAR -->
+    <header class="sticky top-0 z-50 w-full glass-nav transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand Logo -->
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-mint-500/20 to-cyanGlow-500/20 border border-mint-500/30 flex items-center justify-center text-mint-400 font-bold">
+                        <i data-lucide="globe-2" class="w-5 h-5 text-mint-400"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-base font-extrabold text-white tracking-tight leading-tight">NEXUS<span class="text-mint-400">UGC</span></span>
+                        <span class="text-[10px] text-slate-400 font-medium tracking-wide">Global Brand-Creator Liaison</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <nav class="hidden md:flex items-center gap-8 text-xs font-semibold text-slate-300">
+                    <a href="#cross-border" class="hover:text-mint-400 transition-colors">Global Coverage</a>
+                    <a href="#pillars" class="hover:text-mint-400 transition-colors">Middleman Advantage</a>
+                    <a href="#diagnostic" class="hover:text-mint-400 transition-colors">Problem Gravity Tool</a>
+                    <a href="#contact" class="hover:text-mint-400 transition-colors">Direct Contact</a>
+                </nav>
+
+                <!-- Action Button -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="#contact" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-mint-500 to-emerald-600 hover:from-mint-400 hover:to-emerald-500 text-obsidian-950 font-bold text-xs shadow-lg shadow-mint-500/20 transition-all flex items-center gap-1.5">
+                        <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+                        <span>Email Coordinator</span>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="md:hidden p-2 text-slate-300 hover:text-white" aria-label="Toggle Navigation Menu">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden glass-card px-4 pt-3 pb-6 space-y-3 border-b border-slate-800">
+            <a href="#cross-border" onclick="toggleMobileMenu()" class="block py-2 text-sm text-slate-300">Global Coverage</a>
+            <a href="#pillars" onclick="toggleMobileMenu()" class="block py-2 text-sm text-slate-300">Middleman Advantage</a>
+            <a href="#diagnostic" onclick="toggleMobileMenu()" class="block py-2 text-sm text-slate-300">Problem Gravity Tool</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block py-2 text-sm text-slate-300">Direct Contact</a>
+            <a href="#contact" onclick="toggleMobileMenu()" class="block w-full text-center py-3 bg-mint-500 text-obsidian-950 font-bold text-xs rounded-xl mt-2">Email Coordinator Directly</a>
+        </div>
+    </header>
+
+    <main class="flex-grow relative overflow-hidden">
+        <!-- AMBIENT BACKGROUND GLOW BLOBS -->
+        <div class="absolute top-10 left-1/4 w-[600px] h-[600px] glow-emerald pointer-events-none -z-10"></div>
+        <div class="absolute top-60 right-1/4 w-[500px] h-[500px] glow-cyan pointer-events-none -z-10"></div>
+
+        <!-- HERO SECTION -->
+        <section class="relative pt-12 pb-20 md:pt-24 md:pb-32">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center space-y-6">
+                    
+                    <!-- Global Expansion Coverage Badge -->
+                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-card-accent text-xs font-semibold text-mint-300 border border-mint-500/30 shadow-inner">
+                        <span class="w-2 h-2 rounded-full bg-mint-400 animate-pulse"></span>
+                        <span>US • EU • ASIA • GLOBAL CROSS-BORDER UGC COORDINATION</span>
+                    </div>
+
+                    <!-- Main Headline -->
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tight">
+                        Source Famous <span class="bg-gradient-to-r from-mint-400 via-cyanGlow-400 to-emerald-400 bg-clip-text text-transparent">1M+ & Health Creators</span> Across Timezones. Zero DM Chaos.
+                    </h1>
+
+                    <!-- Subheadline -->
+                    <p class="text-sm sm:text-base text-slate-300 leading-relaxed font-normal max-w-2xl mx-auto">
+                        We act as your dedicated liaison bridge—handling creator vetting, rate negotiations, legal contract execution, and cross-border follow-ups so your brand enters new markets seamlessly.
+                    </p>
+
+                    <!-- Hero Call-to-Actions -->
+                    <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+                        <a href="#diagnostic" class="w-full sm:w-auto px-8 py-3.5 rounded-xl bg-gradient-to-r from-mint-500 to-emerald-600 hover:from-mint-400 hover:to-emerald-500 text-obsidian-950 font-bold text-xs shadow-xl shadow-mint-500/20 transition-all text-center flex items-center justify-center gap-2">
+                            <i data-lucide="shield-alert" class="w-4 h-4"></i>
+                            <span>Check Your Brand Friction Score</span>
+                        </a>
+                        <a href="#contact" class="w-full sm:w-auto px-8 py-3.5 rounded-xl glass-card text-slate-200 hover:text-white font-semibold text-xs border border-slate-700/80 transition-all text-center flex items-center justify-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4 text-mint-400"></i>
+                            <span>Email Us Campaign Brief</span>
+                        </a>
+                    </div>
+
+                    <!-- Quick Highlights Strip -->
+                    <div class="pt-12 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left border-t border-slate-800/80">
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-base font-bold text-white flex items-center gap-1.5">
+                                <i data-lucide="users" class="w-4 h-4 text-mint-400"></i>
+                                <span>1M+ Reach</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-1">Famous & Health Creators</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-base font-bold text-white flex items-center gap-1.5">
+                                <i data-lucide="clock" class="w-4 h-4 text-cyanGlow-400"></i>
+                                <span>8-12h Bridge</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-1">Cross-Timezone Managed</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-base font-bold text-white flex items-center gap-1.5">
+                                <i data-lucide="file-check-2" class="w-4 h-4 text-mint-400"></i>
+                                <span>100% Signed</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-1">Usage Rights & Contracts</div>
+                        </div>
+                        <div class="glass-card p-4 rounded-xl">
+                            <div class="text-base font-bold text-white flex items-center gap-1.5">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-cyanGlow-400"></i>
+                                <span>Zero Ghosting</span>
+                            </div>
+                            <div class="text-[11px] text-slate-400 mt-1">Milestone Follow-ups</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CROSS-BORDER EXPANSION MATRIX -->
+        <section id="cross-border" class="py-20 bg-obsidian-900/80 border-y border-slate-800/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-14">
+                    <span class="text-xs font-bold text-mint-400 uppercase tracking-widest">Global Market Expansion</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">Bridging Cross-Border UGC Execution</h2>
+                    <p class="text-xs text-slate-400 mt-2">When entering foreign markets, finding verified creators with massive local followings and navigating 8-12 hour time lags causes campaign collapse. We fix that.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Route 1: US -> Asia -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-mint-500/40 transition-all space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-md bg-mint-500/10 text-mint-400 text-[11px] font-bold border border-mint-500/20">US Market &rarr; Asia</span>
+                            <i data-lucide="plane-takeoff" class="w-5 h-5 text-mint-400"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">US Brands Entering Asian Markets</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Sourcing 1M+ Asian UGC creators and specialized nutritionists. We eliminate the 12-hour communication lag, negotiate local currency rates, and enforce deal terms in local jurisdictions.
+                        </p>
+                        <div class="pt-2 flex items-center gap-2 text-[11px] text-slate-400">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-mint-400"></i>
+                            <span>Local Language Briefing & Compliance</span>
+                        </div>
+                    </div>
+
+                    <!-- Route 2: Asia -> EU -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-cyanGlow-500/40 transition-all space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-md bg-cyanGlow-500/10 text-cyanGlow-400 text-[11px] font-bold border border-cyanGlow-500/20">Asian Market &rarr; EU</span>
+                            <i data-lucide="globe" class="w-5 h-5 text-cyanGlow-400"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">Asian Brands Entering European Union</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Securing EU dietitians and high-reach wellness leaders across Germany, UK, and France. We navigate complex European health claim regulations and secure full ad whitelisting rights.
+                        </p>
+                        <div class="pt-2 flex items-center gap-2 text-[11px] text-slate-400">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-cyanGlow-400"></i>
+                            <span>EU Health Disclaimers & Whitelisting</span>
+                        </div>
+                    </div>
+
+                    <!-- Route 3: EU -> US/Global -->
+                    <div class="glass-card p-6 rounded-2xl border border-slate-800 hover:border-mint-500/40 transition-all space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="px-2.5 py-1 rounded-md bg-mint-500/10 text-mint-400 text-[11px] font-bold border border-mint-500/20">EU Market &rarr; US / Global</span>
+                            <i data-lucide="sparkles" class="w-5 h-5 text-mint-400"></i>
+                        </div>
+                        <h3 class="text-base font-bold text-white">EU & Global Brands Scaling in America</h3>
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            Connecting with viral US creators and board-certified dietitian influencers. We protect your budget from inflated US creator quotes through seasoned middleman negotiation.
+                        </p>
+                        <div class="pt-2 flex items-center gap-2 text-[11px] text-slate-400">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-mint-400"></i>
+                            <span>Usage Rights & FTC Compliance Locked</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MIDDLEMAN VALUE PILLARS -->
+        <section id="pillars" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-xs font-bold text-mint-400 uppercase tracking-widest">Full Execution Management</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-white mt-1">4 Middleman Pillars We Handle For You</h2>
+                <p class="text-xs text-slate-400 mt-2">Delegate the messy operational middleman work to us while your marketing team stays focused on overall strategy.</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Pillar 1 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-mint-500/10 text-mint-400 flex items-center justify-center font-bold">
+                        <i data-lucide="user-check" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">1M+ & Health Vetting</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">We audit audience demographics, check bot ratios, and verify dietitian credentials to ensure authentic alignment.</p>
+                </div>
+
+                <!-- Pillar 2 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyanGlow-500/10 text-cyanGlow-400 flex items-center justify-center font-bold">
+                        <i data-lucide="coins" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Rate Negotiation</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">We act as a buffer to prevent creator price gouging, securing optimal rates for spark ads, usage rights, and raw footage.</p>
+                </div>
+
+                <!-- Pillar 3 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-mint-500/10 text-mint-400 flex items-center justify-center font-bold">
+                        <i data-lucide="file-signature" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Signed Contracts</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">Every creator signs binding legal release forms covering licensing duration, exclusivity, and FTC disclaimers prior to product shipment.</p>
+                </div>
+
+                <!-- Pillar 4 -->
+                <div class="glass-card p-6 rounded-2xl border border-slate-800 space-y-3">
+                    <div class="w-10 h-10 rounded-xl bg-cyanGlow-500/10 text-cyanGlow-400 flex items-center justify-center font-bold">
+                        <i data-lucide="messages-square" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-sm font-bold text-white">Relentless Follow-ups</h3>
+                    <p class="text-xs text-slate-400 leading-relaxed">We track sample delivery, enforce strict shooting windows, and run draft reviews across all global time zones.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- INTERACTIVE BRAND "PROBLEM GRAVITY" DIAGNOSTIC TOOL -->
+        <section id="diagnostic" class="py-20 bg-obsidian-900/60 border-t border-slate-800/80">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+                <div class="text-center max-w-2xl mx-auto space-y-2">
+                    <span class="text-xs font-bold text-mint-400 uppercase tracking-widest">Brand Diagnostic Tool</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Calculate Your UGC "Problem Gravity" Score</h2>
+                    <p class="text-xs text-slate-400">Answer 6 short questions regarding your international creator operations to assess your brand's operational risk and friction levels.</p>
+                </div>
+
+                <div class="glass-card p-6 sm:p-10 rounded-3xl border border-slate-800 space-y-8">
+                    <form id="quizForm" class="space-y-8">
+                        
+                        <!-- Question 1 -->
+                        <div class="space-y-3 border-b border-slate-800/80 pb-6">
+                            <label class="block text-xs font-bold text-white tracking-wide uppercase">
+                                1. Cross-Border & Timezone Friction (15 pts)
+                            </label>
+                            <p class="text-xs text-slate-400">How do you currently handle asynchronous communications and 8-12+ hour time lags when expanding into foreign markets?</p>
+                            <div class="space-y-2 pt-1">
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>In-house team handles global outreach smoothly across hours</span>
+                                    <input type="radio" name="q1" value="0" onclick="updateOptionState(this)" checked class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Moderate 24-48h delays waiting for responses from overseas creators</span>
+                                    <input type="radio" name="q1" value="8" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Severe bottlenecks—missed campaign launch windows due to timezone gaps</span>
+                                    <input type="radio" name="q1" value="15" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="space-y-3 border-b border-slate-800/80 pb-6">
+                            <label class="block text-xs font-bold text-white tracking-wide uppercase">
+                                2. Sourcing Famous 1M+ & Health Creators (20 pts)
+                            </label>
+                            <p class="text-xs text-slate-400">How difficult is it for your team to find and verify genuine high-reach figures or registered dietitians?</p>
+                            <div class="space-y-2 pt-1">
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>We have an established global database of verified 1M+ creators</span>
+                                    <input type="radio" name="q2" value="0" onclick="updateOptionState(this)" checked class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Takes weeks of manual DMs and checking for fake/bot follower ratios</span>
+                                    <input type="radio" name="q2" value="10" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Extremely difficult—unable to secure authentic dietitian/high-reach talent</span>
+                                    <input type="radio" name="q2" value="20" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="space-y-3 border-b border-slate-800/80 pb-6">
+                            <label class="block text-xs font-bold text-white tracking-wide uppercase">
+                                3. Creator Follower Scale & Tier Management (20 pts)
+                            </label>
+                            <p class="text-xs text-slate-400">How do you manage negotiations when working across mixed tiers (micro vs. famous 1M+ creators)?</p>
+                            <div class="space-y-2 pt-1">
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Standardized tier budgets and easy agreement terms</span>
+                                    <input type="radio" name="q3" value="0" onclick="updateOptionState(this)" checked class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>High-tier 1M+ creators demand agency representation and custom fees</span>
+                                    <input type="radio" name="q3" value="10" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>High friction—famous creators demand extreme upfront fees without guaranteed terms</span>
+                                    <input type="radio" name="q3" value="20" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="space-y-3 border-b border-slate-800/80 pb-6">
+                            <label class="block text-xs font-bold text-white tracking-wide uppercase">
+                                4. Rate & Usage Rights Negotiation Friction (15 pts)
+                            </label>
+                            <p class="text-xs text-slate-400">How smooth is the negotiation process regarding ad whitelisting, raw footage, and licensing duration?</p>
+                            <div class="space-y-2 pt-1">
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Rates and usage terms are simple and fixed</span>
+                                    <input type="radio" name="q4" value="0" onclick="updateOptionState(this)" checked class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Frequent back-and-forth haggling over monthly whitelisting add-ons</span>
+                                    <input type="radio" name="q4" value="8" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Creators demand inflated rates or refuse ad usage rights after filming</span>
+                                    <input type="radio" name="q4" value="15" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 5 -->
+                        <div class="space-y-3 border-b border-slate-800/80 pb-6">
+                            <label class="block text-xs font-bold text-white tracking-wide uppercase">
+                                5. Contract Signing & Legal Compliance Drop-off (15 pts)
+                            </label>
+                            <p class="text-xs text-slate-400">How consistently do creators sign legal agreements (NDAs, usage releases, FTC compliance) before receiving products?</p>
+                            <div class="space-y-2 pt-1">
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>100% of creators sign contracts digitally before shipment</span>
+                                    <input type="radio" name="q5" value="0" onclick="updateOptionState(this)" checked class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>We constantly chase creators for days to sign paperwork</span>
+                                    <input type="radio" name="q5" value="8" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Products are sent without signed agreements due to process delays</span>
+                                    <input type="radio" name="q5" value="15" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 6 -->
+                        <div class="space-y-3 pb-2">
+                            <label class="block text-xs font-bold text-white tracking-wide uppercase">
+                                6. Ghosting, Follow-ups, & Missed Deadlines (15 pts)
+                            </label>
+                            <p class="text-xs text-slate-400">What percentage of creators deliver videos on time without ghosting or requiring endless reminders?</p>
+                            <div class="space-y-2 pt-1">
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Deliveries always arrive on schedule without follow-ups</span>
+                                    <input type="radio" name="q6" value="0" onclick="updateOptionState(this)" checked class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>Frequent delays requiring constant team follow-ups in DMs</span>
+                                    <input type="radio" name="q6" value="8" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                                <label class="quiz-option block p-3.5 rounded-xl border border-slate-800 cursor-pointer flex items-center justify-between text-xs text-slate-300">
+                                    <span>High ghosting rate after product dispatch; unusable raw footage delivered</span>
+                                    <input type="radio" name="q6" value="15" onclick="updateOptionState(this)" class="accent-mint-500">
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Diagnostic Action Button -->
+                        <button type="button" onclick="calculateGravityScore()" class="w-full py-4 rounded-xl bg-gradient-to-r from-mint-500 to-emerald-600 hover:from-mint-400 hover:to-emerald-500 text-obsidian-950 font-extrabold text-xs shadow-lg shadow-mint-500/20 transition-all text-center">
+                            Calculate Problem Gravity Score
+                        </button>
+                    </form>
+
+                    <!-- Score Result Panel (Hidden by Default) -->
+                    <div id="scoreResult" class="hidden glass-card-accent p-6 sm:p-8 rounded-2xl border border-mint-500/40 text-center space-y-6">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-widest text-slate-400">Your Operational Score</span>
+                            <div class="text-4xl sm:text-5xl font-black text-mint-400 mt-2" id="scoreDisplay">0 / 100</div>
+                            <div class="text-sm font-bold text-white mt-2" id="tierTitle">Diagnostic Output</div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-obsidian-950/80 border border-slate-800 text-left space-y-2">
+                            <div class="text-xs font-bold text-mint-300" id="tierDiagnosis">Diagnosis Title</div>
+                            <p class="text-xs text-slate-300 leading-relaxed" id="tierAdvice">Advice body text goes here.</p>
+                        </div>
+
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                            <a href="#contact" class="w-full sm:w-auto px-8 py-3 rounded-xl bg-mint-500 hover:bg-mint-400 text-obsidian-950 font-bold text-xs transition-all text-center">
+                                Email Coordinator For Liaison Terms
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- DIRECT EMAIL CONTACT SECTION -->
+        <section id="contact" class="py-20 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-800 text-center space-y-6">
+                <div class="w-12 h-12 rounded-2xl bg-mint-500/20 text-mint-400 flex items-center justify-center mx-auto font-bold">
+                    <i data-lucide="mail-check" class="w-6 h-6"></i>
+                </div>
+
+                <div class="space-y-2 max-w-xl mx-auto">
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Delegate Your UGC Coordination</h2>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Ready to launch cross-border UGC campaigns with famous 1M+ creators and dietitians without managing timezone nightmare DMs? Email us directly with your brand details and target expansion region.
+                    </p>
+                </div>
+
+                <!-- Direct Email Box -->
+                <div class="p-4 rounded-2xl bg-obsidian-950/80 border border-slate-800 max-w-md mx-auto space-y-3">
+                    <div class="text-xs font-semibold text-slate-400">Direct Agency Liaison Email</div>
+                    <div class="text-sm sm:text-base font-bold text-mint-400 select-all tracking-wider font-mono">
+                        coordinator@nexusugc.com
+                    </div>
+                    <p class="text-[10px] text-slate-500">We respond within 12 hours across US, European, and Asian business windows.</p>
+                </div>
+
+                <!-- Email Mailto Action -->
+                <div class="pt-2">
+                    <a href="mailto:coordinator@nexusugc.com?subject=Brand%20UGC%20Coordination%20Inquiry" class="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl bg-gradient-to-r from-mint-500 to-emerald-600 hover:from-mint-400 hover:to-emerald-500 text-obsidian-950 font-bold text-xs shadow-lg shadow-mint-500/20 transition-all">
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                        <span>Send Email Brief Now</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-obsidian-950 border-t border-slate-800/80 py-10 text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <div class="w-6 h-6 rounded-md bg-mint-500/20 text-mint-400 flex items-center justify-center font-bold text-xs">N</div>
+                    <span class="font-bold text-white text-sm">NEXUS UGC Agency</span>
+                </div>
+                <div class="flex gap-6 text-[11px]">
+                    <a href="#cross-border" class="hover:text-mint-400">Global Coverage</a>
+                    <a href="#pillars" class="hover:text-mint-400">Middleman Advantage</a>
+                    <a href="#diagnostic" class="hover:text-mint-400">Diagnostic Score</a>
+                    <a href="#contact" class="hover:text-mint-400">Direct Contact</a>
+                </div>
+            </div>
+
+            <div class="p-4 rounded-xl glass-card border border-slate-800 text-[11px] text-slate-500 leading-relaxed">
+                <strong class="text-slate-400">Agency Statement:</strong> NEXUS UGC operates exclusively as a third-party management liaison connecting commercial brands with digital UGC creators and health public figures. Custom coordination terms and campaign scopes are communicated confidentially via email.
+            </div>
+
+            <div class="text-center text-[11px] text-slate-600">
+                © 2026 NEXUS UGC Coordination Agency. Cross-Border Brand-Creator Management.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function updateOptionState(radio) {
+            // Clear active styling from sibling options in the same group
+            const name = radio.name;
+            const options = document.querySelectorAll(`input[name="${name}"]`);
+            options.forEach(opt => {
+                opt.closest('.quiz-option').classList.remove('active');
+            });
+            // Highlight chosen option
+            if (radio.checked) {
+                radio.closest('.quiz-option').classList.add('active');
+            }
+        }
+
+        function calculateGravityScore() {
+            const form = document.getElementById('quizForm');
+            let totalScore = 0;
+
+            for (let i = 1; i <= 6; i++) {
+                const selected = form.querySelector(`input[name="q${i}"]:checked`);
+                if (selected) {
+                    totalScore += parseInt(selected.value);
+                }
+            }
+
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const tierTitle = document.getElementById('tierTitle');
+            const tierDiagnosis = document.getElementById('tierDiagnosis');
+            const tierAdvice = document.getElementById('tierAdvice');
+            const scoreResult = document.getElementById('scoreResult');
+
+            scoreDisplay.innerText = `${totalScore} / 100`;
+
+            if (totalScore < 50) {
+                tierTitle.innerText = "Low Friction - Controlled Operations";
+                tierDiagnosis.innerText = "Status: Smooth Operational Control";
+                tierAdvice.innerText = "Your in-house team is currently managing creator communications effectively. However, as you scale into new global markets or onboard famous 1M+ creators, keep your licensing contracts and timezone buffers strictly standardized.";
+            } else if (totalScore >= 50 && totalScore < 60) {
+                tierTitle.innerText = "Score 50 - 60: Moderate Friction / Operational Drag";
+                tierDiagnosis.innerText = "Diagnosis: Subtle Operational Drag & Communication Lag";
+                tierAdvice.innerText = "You are currently losing 10-15 internal team hours per campaign to timezone communication lags, follow-up messages, and rate discussions. Standardizing your liaison workflow now will prevent launch delays as you scale.";
+            } else if (totalScore >= 60 && totalScore < 80) {
+                tierTitle.innerText = "Score 60 - 80: High Risk / The Scalability Bottleneck";
+                tierDiagnosis.innerText = "Diagnosis: Timezone Lags & Licensing Contract Exposure";
+                tierAdvice.innerText = "Managing cross-border creators directly is creating severe campaign bottlenecks. Chasing un-signed contracts, negotiating with 1M+ creator reps, and handling 12-hour timezone delays are actively slowing down your international market entry.";
+            } else {
+                tierTitle.innerText = "Score 80 - 100: Critical Gravity / Campaign Chaos";
+                tierDiagnosis.innerText = "Diagnosis: High Operational Breakdown & Creator Ghosting";
+                tierAdvice.innerText = "Direct creator management is burning out your internal marketing team. Unsigned usage rights agreements, creator ghosting after sample delivery, and unorganized follow-ups expose your brand to legal and budget risks. Immediate middleman coordinator intervention is required.";
+            }
+
+            scoreResult.classList.remove('hidden');
+            scoreResult.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize active class state on load
+        document.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+            radio.closest('.quiz-option').classList.add('active');
+        });
+    </script>
+</body>
+</html>
